@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--warno gradien login& register-->
+    <color name="gradient0">#87cebf</color>
+    <color name="gradient1">#ffe9bc</color>
+    <color name="gradient2">#fff2d9</color>
 </resources>
