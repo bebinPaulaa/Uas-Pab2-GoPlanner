@@ -7,4 +7,15 @@
     <color name="gradient0">#87cebf</color>
     <color name="gradient1">#ffe9bc</color>
     <color name="gradient2">#fff2d9</color>
+
+    <color name="gradientdark0">#0F3A31</color>
+    <color name="gradientdark1">#1F7764</color>
+    <color name="gradientdark2">#7CC5B5</color>
+
+    <color name="gradientorange0">#FFAC47</color>
+    <color name="gradientorange1">#FFCC8F</color>
+
+
+
+
 </resources>

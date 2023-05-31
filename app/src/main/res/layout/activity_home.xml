@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/tv_user"
+            style="@style/TextAppearance.Material3.TitleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="250dp"
+            android:layout_marginBottom="10dp"
+            android:text="Halo, zarazzar" />
+
+
+        <ImageButton
+            android:id="@+id/ib_profil"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:background="@drawable/profile" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Short Cut"
+            android:layout_below="@id/tv_user"
+            android:textSize="15sp"
+            android:layout_marginTop="30dp"
+            />
+    </RelativeLayout>
+    <HorizontalScrollView
+        android:id="@+id/horizontal_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_top"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_addstudy"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/custom_button_ijomudo"
+                android:text="add study plan"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_addwork"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/custom_button_ijomudo"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:text="add Work plan" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_addnotes"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/custom_button_ijomudo"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:text="add Notes" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_aboutApp"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:background="@drawable/custom_button_ijotuo"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:text="About App" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/horizontal_scroll"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/tv_growplan"
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@id/iv_plan"
+            android:text="Grow Your Plan" />
+
+        <ImageView
+            android:id="@+id/iv_plan"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/plant" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_study"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/tv_growplan"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/custom_button_ijotuo"
+            android:text="Study Plan"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_work"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/btn_study"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/custom_button_ijomudo"
+            android:text="Work Plan"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_notes"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/btn_work"
+            android:background="@drawable/custom_button_0"
+            android:text="Notes"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+
+
+
+
+
+</RelativeLayout>
