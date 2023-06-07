@@ -8,6 +8,7 @@
     tools:context=".LoginActivity">
 
     <LinearLayout
+        android:id="@+id/ll_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -90,6 +91,13 @@
 
 
     </LinearLayout>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/ll_login"
+        android:visibility="gone"/>
 
 
 </RelativeLayout>
