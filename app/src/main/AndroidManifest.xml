@@ -60,21 +60,19 @@
             android:name=".UpdateNoteActivity"
             android:exported="false"
             android:theme="@style/Theme.GoPlanner.ActionBarOren"
-
             android:parentActivityName=".MainActivity3"
             />
         <activity
             android:name=".UpdateWorkActivity"
             android:exported="false"
             android:theme="@style/Theme.GoPlanner.ActionBarIjomudo."
-
             android:parentActivityName=".MainActivity2"/>
         <activity
             android:name=".UpdateStudyActivity"
             android:exported="false"
             android:theme="@style/Theme.GoPlanner.ActionBarIjotuo"
-
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            />
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.GoPlanner.ActionBarIjotuo"

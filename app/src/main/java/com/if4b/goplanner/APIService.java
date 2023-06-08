@@ -49,9 +49,12 @@ public interface APIService {
     @PUT("study")
     Call<ValueNoData> updateStudy(@Field("id")String id,
                                   @Field("content")String content);
+
+    @FormUrlEncoded
     @PUT("work")
     Call<ValueNoData> updateWork(@Field("id")String id,
                                   @Field("content")String content);
+    @FormUrlEncoded
     @PUT("note")
     Call<ValueNoData> updateNote(@Field("id")String id,
                                  @Field("content")String content);

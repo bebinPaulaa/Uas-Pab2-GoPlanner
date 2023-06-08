@@ -3,6 +3,8 @@ package com.if4b.goplanner;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,16 +17,19 @@ import java.util.List;
 public class StudyViewAdapter extends RecyclerView.Adapter<StudyViewAdapter.ViewHolder>
 {
     private List<Study> data = new ArrayList<>();
-//    private  OnItemLongClickListener onItemLongClickListener;
+
+
+
+    private  OnItemLongClickListener onItemLongClickListener;
 
     public void setData(List<Study> data){
         this.data =data;
         notifyDataSetChanged();
 
     }
-//    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {//updatePost
-//        this.onItemLongClickListener = onItemLongClickListener;
-//    }
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {//updatePost
+        this.onItemLongClickListener = onItemLongClickListener;
+    }
 
     @NonNull
     @Override
@@ -39,13 +44,13 @@ public class StudyViewAdapter extends RecyclerView.Adapter<StudyViewAdapter.View
         holder.studyItemBinding.tvContent.setText(study.getContent());
         holder.studyItemBinding.tvCreateddate.setText(study.getCreate_date());
 
-//        holder.itemView.setOnLongClickListener(new View.OnLongClickListener(){
-//            @Override
-//            public boolean onLongClick(View v) {
-//                onItemLongClickListener.onItemLongClick(v,pos);
-//                return false;
-//            }
-//        });
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener(){
+            @Override
+            public boolean onLongClick(View v) {
+                onItemLongClickListener.onItemLongClick(v,pos);
+                return false;
+            }
+        });
 
     }
 
@@ -53,6 +58,8 @@ public class StudyViewAdapter extends RecyclerView.Adapter<StudyViewAdapter.View
     public int getItemCount() {
         return data.size();
     }
+
+
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         private StudyItemBinding studyItemBinding;
@@ -62,7 +69,7 @@ public class StudyViewAdapter extends RecyclerView.Adapter<StudyViewAdapter.View
         }
     }
 
-//    public interface OnItemLongClickListener{
-//        void onItemLongClick(View v,int position);
-//    }
+    public interface OnItemLongClickListener{
+        void onItemLongClick(View v,int position);
+    }
 }

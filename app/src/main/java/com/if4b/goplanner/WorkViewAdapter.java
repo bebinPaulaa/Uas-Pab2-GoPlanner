@@ -14,16 +14,16 @@ import java.util.List;
 
 public class WorkViewAdapter extends RecyclerView.Adapter<WorkViewAdapter.ViewHolder> {
     private List<Work> data = new ArrayList<>();
-//    private WorkViewAdapter.onItemLongClickListener onItemLongClickListener;
+    private WorkViewAdapter.onItemLongClickListener onItemLongClickListener;
 
     public void setData(List<Work> data) {
         this.data = data;
         notifyDataSetChanged();
     }
 
-//    public void setOnItemLongClickListener(onItemLongClickListener onItemLongClickListener) {
-//        this.onItemLongClickListener = onItemLongClickListener;
-//    }
+    public void setOnItemLongClickListener(onItemLongClickListener onItemLongClickListener) {
+        this.onItemLongClickListener = onItemLongClickListener;
+    }
 
     @NonNull
     @Override
@@ -37,13 +37,13 @@ public class WorkViewAdapter extends RecyclerView.Adapter<WorkViewAdapter.ViewHo
         holder.workItemBinding.tvContent.setText(work.getContent());
         holder.workItemBinding.tvCreatedDate.setText(work.getCreate_date());
 
-//        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View v) {
-//                onItemLongClickListener.onItemLongClick(v, pos);
-//                return false;
-//            }
-//        });
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                onItemLongClickListener.onItemLongClick(v, pos);
+                return false;
+            }
+        });
     }
 
     public int getItemCount() { return data.size(); }
@@ -57,7 +57,7 @@ public class WorkViewAdapter extends RecyclerView.Adapter<WorkViewAdapter.ViewHo
         }
     }
 
-//    public interface onItemLongClickListener {
-//        void onItemLongClick(View v, int position);
-//    }
+    public interface onItemLongClickListener {
+        void onItemLongClick(View v, int position);
+    }
 }

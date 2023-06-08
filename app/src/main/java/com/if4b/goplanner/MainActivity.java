@@ -1,9 +1,18 @@
 package com.if4b.goplanner;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 import com.if4b.goplanner.databinding.ActivityMainBinding;
 import java.util.List;
@@ -27,6 +36,54 @@ public class MainActivity extends AppCompatActivity {
         studyViewAdapter = new StudyViewAdapter();
         binding.rvStudy.setLayoutManager(new LinearLayoutManager(this));
         binding.rvStudy.setAdapter(studyViewAdapter);
+
+        studyViewAdapter.setOnItemLongClickListener(new StudyViewAdapter.OnItemLongClickListener() {
+            @Override
+            public void onItemLongClick(View v, int position) {
+                PopupMenu popupMenu = new PopupMenu(MainActivity.this, v);
+                popupMenu.inflate(R.menu.menu_popup);
+                popupMenu.setGravity(Gravity.RIGHT);
+
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        int idMenu = item.getItemId();
+
+                        if (idMenu == R.id.action_edit) {
+                            Intent intent = new Intent(MainActivity.this, UpdateStudyActivity.class);
+                            intent.putExtra("EXTRA_DATA", data.get(position));
+                            startActivity(intent);
+                            return true;
+                        } else if (idMenu == R.id.action_delete) {
+                            String id = data.get(position).getId();
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+                            alertDialogBuilder.setTitle("Konfirmasi");
+                            alertDialogBuilder.setMessage("Yakin ingin menghapus postingan '" + data.get(position).getContent() + "' ? ");
+
+                            alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    deletePost(id);
+                                }
+                            });
+
+                            alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+                            alertDialog.show();
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                });
+                popupMenu.show();
+            }
+        });
 
         binding.fabInput.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +130,33 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void deletePost(String id) { //updatePost
+        APIService api = Utility.getRetrofit().create(APIService.class);
+        Call<ValueNoData> call = api.deleteStudy(id);
+        call.enqueue(new Callback<ValueNoData>() {
+            @Override
+            public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {
+                if(response.code()==200){
+                    int success = response.body().getSuccess();
+                    String message = response.body().getMessage();
+
+                    if (success == 1){
+                        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                        getAllStudy();
+                    }else{
+                        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(MainActivity.this, "Response "+response.code(), Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<ValueNoData> call, Throwable t) {
+                System.out.println("Retrofit Errror : "+ t.getMessage());
+                Toast.makeText(MainActivity.this, "Retrofit Error : "+ t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     @Override
     protected void onResume() {

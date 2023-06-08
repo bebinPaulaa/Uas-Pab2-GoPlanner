@@ -1,11 +1,16 @@
 package com.if4b.goplanner;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.if4b.goplanner.databinding.ActivityMain2Binding;
@@ -31,6 +36,55 @@ public class MainActivity2 extends AppCompatActivity {
         workViewAdapter = new WorkViewAdapter();
         binding.rvWork.setLayoutManager(new LinearLayoutManager(this));
         binding.rvWork.setAdapter(workViewAdapter);
+
+        workViewAdapter.setOnItemLongClickListener(new WorkViewAdapter.onItemLongClickListener() {
+            @Override
+            public void onItemLongClick(View v, int position) {
+                PopupMenu popupMenu = new PopupMenu(MainActivity2.this, v);
+                popupMenu.inflate(R.menu.menu_popup);
+                popupMenu.setGravity(Gravity.RIGHT);
+
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        int idMenu = item.getItemId();
+
+                        if (idMenu == R.id.action_edit) {
+                            Intent intent = new Intent(MainActivity2.this, UpdateWorkActivity.class);
+                            intent.putExtra("EXTRA_DATA", data.get(position));
+                            startActivity(intent);
+                            return true;
+                        } else if (idMenu == R.id.action_delete) {
+                            String id = data.get(position).getId();
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity2.this);
+                            alertDialogBuilder.setTitle("Konfirmasi");
+                            alertDialogBuilder.setMessage("Yakin ingin menghapus postingan '" + data.get(position).getContent() + "' ? ");
+
+                            alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    deletePost(id);
+                                }
+                            });
+
+                            alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+                            alertDialog.show();
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                });
+                popupMenu.show();
+            }
+        });
+
 
         binding.fabInput.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +128,34 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
    }
+    private void deletePost(String id) { //updatePost
+        APIService api = Utility.getRetrofit().create(APIService.class);
+        Call<ValueNoData> call = api.deleteWork(id);
+        call.enqueue(new Callback<ValueNoData>() {
+            @Override
+            public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {
+                if(response.code()==200){
+                    int success = response.body().getSuccess();
+                    String message = response.body().getMessage();
+
+                    if (success == 1){
+                        Toast.makeText(MainActivity2.this, message, Toast.LENGTH_SHORT).show();
+                        getAllWork();
+                    }else{
+                        Toast.makeText(MainActivity2.this, message, Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(MainActivity2.this, "Response "+response.code(), Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<ValueNoData> call, Throwable t) {
+                System.out.println("Retrofit Errror : "+ t.getMessage());
+                Toast.makeText(MainActivity2.this, "Retrofit Error : "+ t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
     @Override
     protected void onResume() {
