@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    tools:context=".ProfileActivity">
+
+    <TextView
+        android:id="@+id/tv_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:textSize="20dp"
+        android:text="Profile User"/>
+
+    <ImageView
+        android:id="@+id/iv_profile"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_below="@id/tv_profile"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/profile"
+        android:layout_marginBottom="16dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_below="@id/iv_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bebin Paula"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ini adalah deskripsi dan profil dari user yang telah login pada aplikasi ini"
+        android:layout_below="@id/tv_username"
+        android:textAlignment="center"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_aboutApp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="About Us"
+        android:textColor="@color/white"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:background="@drawable/custom_button_0"
+        android:layout_above="@id/btn_logout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        />
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Log Out"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:textColor="#650000"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        />
+</RelativeLayout>
