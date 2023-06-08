@@ -14,15 +14,17 @@ import java.util.List;
 
 public class NoteViewAdapter extends RecyclerView.Adapter<NoteViewAdapter.ViewHolder> {
     private List<Note> data = new ArrayList<>();
-    private NoteViewAdapter.OnItemLongClickListener onItemLongClickListener;
+//    private NoteViewAdapter.OnItemLongClickListener onItemLongClickListener;
 
     public void setData(List<Note> data) {
         this.data = data;
+        notifyDataSetChanged();
+
     }
 
-    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
-        this.onItemLongClickListener = onItemLongClickListener;
-    }
+//    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
+//        this.onItemLongClickListener = onItemLongClickListener;
+//    }
 
     @NonNull
     @Override
@@ -38,13 +40,13 @@ public class NoteViewAdapter extends RecyclerView.Adapter<NoteViewAdapter.ViewHo
         holder.noteItemBinding.tvContent.setText(note.getContent());
         holder.noteItemBinding.tvCreatedDate.setText(note.getCreate_date());
 
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                onItemLongClickListener.onItemLongClick(v,pos);
-                return false;
-            }
-        });
+//        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                onItemLongClickListener.onItemLongClick(v,pos);
+//                return false;
+//            }
+//        });
     }
 
     public int getItemCount() { return data.size(); }
@@ -57,7 +59,7 @@ public class NoteViewAdapter extends RecyclerView.Adapter<NoteViewAdapter.ViewHo
         }
     }
 
-    public interface OnItemLongClickListener {
-        void onItemLongClick(View v, int position);
-    }
+//    public interface OnItemLongClickListener {
+//        void onItemLongClick(View v, int position);
+//    }
 }

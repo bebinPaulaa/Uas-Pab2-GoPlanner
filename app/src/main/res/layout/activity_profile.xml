@@ -50,7 +50,7 @@
         android:id="@+id/btn_aboutApp"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="About Us"
+        android:text="About App"
         android:textColor="@color/white"
         android:layout_marginTop="16dp"
         android:layout_gravity="center"

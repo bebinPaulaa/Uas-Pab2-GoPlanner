@@ -1,17 +1,12 @@
 package com.if4b.goplanner;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
 import com.if4b.goplanner.databinding.ActivityMainBinding;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void getAllPost(){
+    private void getAllStudy(){
         binding.progressBar.setVisibility(View.VISIBLE);
         APIService api = Utility.getRetrofit().create(APIService.class);
         Call<ValueData<List<Study>>> call = api.getStudy();
@@ -82,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        getAllPost();
+        getAllStudy();
     }
 
 }

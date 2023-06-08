@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/tv_halo"
-            style="@style/TextAppearance.Material3.TitleLarge"
+            style="@style/TextAppearance.Material3.TitleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="250dp"
@@ -30,23 +30,26 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="250dp"
             android:layout_marginBottom="10dp"
-            android:text="Nama Saya" />
+            android:text="Nama Saya"
+            android:textStyle="bold"
+            android:textColor="@color/gradientdark0"/>
 
 
         <ImageButton
             android:id="@+id/ib_profil"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_gravity="end"
             android:background="@drawable/profile" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Short Cut"
+            android:text="Short Cuts"
+            android:textStyle="italic"
             android:layout_below="@id/tv_user"
             android:textSize="15sp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             />
     </RelativeLayout>
     <HorizontalScrollView
@@ -125,7 +128,9 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="20dp"
             android:layout_toRightOf="@id/iv_plan"
-            android:text="Grow Your Plan" />
+            android:text="Grow Your Plan"
+            android:textStyle="italic|bold"
+            />
 
         <ImageView
             android:id="@+id/iv_plan"
@@ -165,7 +170,7 @@
             android:background="@drawable/custom_button_0"
             android:text="Notes"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="#676767"
             android:textSize="20dp" />
     </RelativeLayout>
 

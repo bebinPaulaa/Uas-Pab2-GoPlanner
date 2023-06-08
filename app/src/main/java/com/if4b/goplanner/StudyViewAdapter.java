@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.if4b.goplanner.databinding.ActivityHomeBinding;
 import com.if4b.goplanner.databinding.StudyItemBinding;
 
 import java.util.ArrayList;

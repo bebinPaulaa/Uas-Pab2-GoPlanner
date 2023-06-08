@@ -9,7 +9,7 @@ public class Work implements Parcelable {
     private String id;
     private String content;
     private String user_id;
-    private String create_date;
+    private String created_date;
     private String modified_date;
     private String username;
 
@@ -17,7 +17,7 @@ public class Work implements Parcelable {
         id = in.readString();
         content = in.readString();
         user_id = in.readString();
-        create_date = in.readString();
+        created_date = in.readString();
         modified_date = in.readString();
         username = in.readString();
     }
@@ -59,11 +59,11 @@ public class Work implements Parcelable {
     }
 
     public String getCreate_date() {
-        return create_date;
+        return created_date;
     }
 
     public void setCreate_date(String create_date) {
-        this.create_date = create_date;
+        this.created_date = create_date;
     }
 
     public String getModified_date() {
@@ -92,7 +92,7 @@ public class Work implements Parcelable {
         dest.writeString(id);
         dest.writeString(content);
         dest.writeString(user_id);
-        dest.writeString(create_date);
+        dest.writeString(created_date);
         dest.writeString(modified_date);
         dest.writeString(username);
     }
