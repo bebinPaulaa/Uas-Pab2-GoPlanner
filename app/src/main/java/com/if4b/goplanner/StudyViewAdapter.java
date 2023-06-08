@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.if4b.goplanner.databinding.ActivityHomeBinding;
 import com.if4b.goplanner.databinding.StudyItemBinding;
 
 import java.util.ArrayList;
@@ -15,15 +16,16 @@ import java.util.List;
 public class StudyViewAdapter extends RecyclerView.Adapter<StudyViewAdapter.ViewHolder>
 {
     private List<Study> data = new ArrayList<>();
-    private  OnItemLongClickListener onItemLongClickListener;
+//    private  OnItemLongClickListener onItemLongClickListener;
 
     public void setData(List<Study> data){
         this.data =data;
+        notifyDataSetChanged();
 
     }
-    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {//updatePost
-        this.onItemLongClickListener = onItemLongClickListener;
-    }
+//    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {//updatePost
+//        this.onItemLongClickListener = onItemLongClickListener;
+//    }
 
     @NonNull
     @Override
@@ -35,17 +37,16 @@ public class StudyViewAdapter extends RecyclerView.Adapter<StudyViewAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         int pos = holder.getAdapterPosition();
         Study study = data.get(pos);
-
         holder.studyItemBinding.tvContent.setText(study.getContent());
-        holder.studyItemBinding.tvCreatedDate.setText(study.getCreate_date());
+        holder.studyItemBinding.tvCreateddate.setText(study.getCreate_date());
 
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener(){
-            @Override
-            public boolean onLongClick(View v) {
-                onItemLongClickListener.onItemLongClick(v,pos);
-                return false;
-            }
-        });
+//        holder.itemView.setOnLongClickListener(new View.OnLongClickListener(){
+//            @Override
+//            public boolean onLongClick(View v) {
+//                onItemLongClickListener.onItemLongClick(v,pos);
+//                return false;
+//            }
+//        });
 
     }
 
@@ -62,7 +63,7 @@ public class StudyViewAdapter extends RecyclerView.Adapter<StudyViewAdapter.View
         }
     }
 
-    public interface OnItemLongClickListener{
-        void onItemLongClick(View v,int position);
-    }
+//    public interface OnItemLongClickListener{
+//        void onItemLongClick(View v,int position);
+//    }
 }

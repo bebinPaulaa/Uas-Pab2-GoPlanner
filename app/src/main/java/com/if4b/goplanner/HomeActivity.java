@@ -8,6 +8,9 @@ import android.view.View;
 
 import com.if4b.goplanner.databinding.ActivityHomeBinding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeActivity extends AppCompatActivity {
     private ActivityHomeBinding binding;
     @Override
@@ -15,6 +18,15 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        if(!Utility.checkValue(this,"xUsername")){
+            Intent intent = new Intent(this,LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        //show dynamic username
+        binding.tvUser.setText(Utility.getValue(this,"xUsername"));
+
 
         binding.ibProfil.setOnClickListener(new View.OnClickListener() {
             @Override

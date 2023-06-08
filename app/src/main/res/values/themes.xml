@@ -2,8 +2,30 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.GoPlanner" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">@color/gradientdark0</item>
+    </style>
+
+    <style name="Base.Theme.GoPlanner.ActionBarIjotuo" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/gradientdark0</item>
+
+
+    </style>
+
+    <style name="Base.Theme.GoPlanner.ActionBarIjomudo" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/gradientdark1</item>
+    </style>
+
+    <style name="Base.Theme.GoPlanner.ActionBarOren" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/gradientorange0</item>
     </style>
 
     <style name="Theme.GoPlanner" parent="Base.Theme.GoPlanner" />
+    <style name="Theme.GoPlanner.ActionBarIjotuo" parent="Base.Theme.GoPlanner.ActionBarIjotuo" />
+    <style name="Theme.GoPlanner.ActionBarIjomudo." parent="Base.Theme.GoPlanner.ActionBarIjomudo" />
+    <style name="Theme.GoPlanner.ActionBarOren" parent="Base.Theme.GoPlanner.ActionBarOren" />
+
+
 </resources>

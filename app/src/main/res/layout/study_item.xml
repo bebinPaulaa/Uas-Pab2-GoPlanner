@@ -32,7 +32,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/tv_created_date"
+                android:id="@+id/tv_createddate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_content"

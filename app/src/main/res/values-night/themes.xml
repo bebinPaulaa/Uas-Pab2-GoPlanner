@@ -3,5 +3,13 @@
     <style name="Base.Theme.GoPlanner" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/gradientdark0</item>
+
+    </style>
+    <style name="Base.Theme.GoPlanner.ActionBarIjotuo" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/gradientdark0</item>
+
+
     </style>
 </resources>

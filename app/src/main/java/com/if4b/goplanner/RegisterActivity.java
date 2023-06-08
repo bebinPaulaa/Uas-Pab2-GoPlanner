@@ -20,10 +20,8 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().hide();
 
         binding.btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
                         Utility.setValue(RegisterActivity.this, "xUserId", response.body().getData().getId());
                         Utility.setValue(RegisterActivity.this, "xUsername", username);
-                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                        Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
                     } else {

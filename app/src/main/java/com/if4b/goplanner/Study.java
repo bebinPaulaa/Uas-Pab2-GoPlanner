@@ -3,7 +3,6 @@ package com.if4b.goplanner;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.NonNull;
 
 public class Study implements Parcelable {
     private String id;
@@ -22,7 +21,19 @@ public class Study implements Parcelable {
         modified_date = in.readString();
         username = in.readString();
     }
-
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(content);
+        dest.writeString(user_id);
+        dest.writeString(create_date);
+        dest.writeString(modified_date);
+        dest.writeString(username);
+    }
+    @Override
+    public int describeContents() {
+        return 0;
+    }
     public static final Creator<Study> CREATOR = new Creator<Study>() {
         @Override
         public Study createFromParcel(Parcel in) {
@@ -83,18 +94,7 @@ public class Study implements Parcelable {
         this.username = username;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeString(id);
-        dest.writeString(content);
-        dest.writeString(user_id);
-        dest.writeString(create_date);
-        dest.writeString(modified_date);
-        dest.writeString(username);
-    }
+
+
 }

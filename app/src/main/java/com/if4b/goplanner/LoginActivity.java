@@ -22,7 +22,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().hide();
 
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
                         Utility.setValue(LoginActivity.this, "xUserId", response.body().getData().getId());
                         Utility.setValue(LoginActivity.this, "xUsername", username);
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
