@@ -90,6 +90,7 @@ public class UpdateWorkActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
+        onBackPressed();
         return true;
     }
 }
