@@ -17,6 +17,13 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         getSupportActionBar().setTitle("My Profile");
         binding.tvUsername.setText(Utility.getValue(this,"xUsername"));
+        binding.btnAboutApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this,ActivityAboutApp.class);
+                startActivity(intent);
+            }
+        });
         binding.btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

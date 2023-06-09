@@ -2,12 +2,15 @@ package com.if4b.goplanner;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
@@ -15,6 +18,7 @@ import android.widget.Toast;
 
 import com.if4b.goplanner.databinding.ActivityMain2Binding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -156,6 +160,35 @@ public class MainActivity2 extends AppCompatActivity {
         });
     }
 
+//    searchbar option menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu,menu);
+        SearchView searchView2 = (SearchView) menu.findItem(R.id.item_search).getActionView();
+
+        searchView2.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                newText = newText.toLowerCase();
+                ArrayList<Work> worksFilter = new ArrayList<>();
+                for (Work work : data){
+                    String contentwork = work.getContent().toLowerCase();
+                    if (contentwork.contains(newText)){
+                        worksFilter.add(work);
+                    }
+                }
+                workViewAdapter.setFilterWork(worksFilter);
+                return true;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     protected void onResume() {

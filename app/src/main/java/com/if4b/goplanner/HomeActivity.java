@@ -24,6 +24,7 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+
         //show dynamic username
         binding.tvUser.setText(Utility.getValue(this,"xUsername"));
 
@@ -78,6 +79,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this,MainActivity3.class);
+                startActivity(intent);
+            }
+        });
+        binding.btnAboutApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this,ActivityAboutApp.class);
                 startActivity(intent);
             }
         });

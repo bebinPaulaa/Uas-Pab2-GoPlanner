@@ -10,11 +10,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 import com.if4b.goplanner.databinding.ActivityMainBinding;
+
+import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -95,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     private void getAllStudy(){
         binding.progressBar.setVisibility(View.VISIBLE);
         APIService api = Utility.getRetrofit().create(APIService.class);
@@ -156,6 +160,37 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Retrofit Error : "+ t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    //searchable option menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+        SearchView searchView = (SearchView) menu.findItem(R.id.item_search).getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                newText = newText.toLowerCase();
+                ArrayList<Study> studyFilter = new ArrayList<>();
+                for (Study study : data){
+                    String contentStudy = study.getContent().toLowerCase();
+                    if(contentStudy.contains(newText)){
+                        studyFilter.add(study);
+                    }
+                }
+
+                studyViewAdapter.setFilterStudy(studyFilter);
+                return true;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

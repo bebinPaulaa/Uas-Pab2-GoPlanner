@@ -51,6 +51,12 @@ public class NoteViewAdapter extends RecyclerView.Adapter<NoteViewAdapter.ViewHo
 
     public int getItemCount() { return data.size(); }
 
+    public void setFilterNote(ArrayList<Note> filterNote){
+        data = new ArrayList<>();
+        data.addAll(filterNote);
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private NoteItemBinding noteItemBinding;
         public ViewHolder(@NonNull NoteItemBinding itemView) {

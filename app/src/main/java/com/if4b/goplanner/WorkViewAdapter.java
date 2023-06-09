@@ -14,7 +14,7 @@ import java.util.List;
 
 public class WorkViewAdapter extends RecyclerView.Adapter<WorkViewAdapter.ViewHolder> {
     private List<Work> data = new ArrayList<>();
-    private WorkViewAdapter.onItemLongClickListener onItemLongClickListener;
+    private onItemLongClickListener onItemLongClickListener;
 
     public void setData(List<Work> data) {
         this.data = data;
@@ -47,6 +47,13 @@ public class WorkViewAdapter extends RecyclerView.Adapter<WorkViewAdapter.ViewHo
     }
 
     public int getItemCount() { return data.size(); }
+
+    //searchbar filterModel
+    public void setFilterWork(ArrayList<Work> filterWork){
+        data = new ArrayList<>();
+        data.addAll(filterWork);
+        notifyDataSetChanged();
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private WorkItemBinding workItemBinding;

@@ -18,8 +18,6 @@ public class StudyViewAdapter extends RecyclerView.Adapter<StudyViewAdapter.View
 {
     private List<Study> data = new ArrayList<>();
 
-
-
     private  OnItemLongClickListener onItemLongClickListener;
 
     public void setData(List<Study> data){
@@ -59,6 +57,12 @@ public class StudyViewAdapter extends RecyclerView.Adapter<StudyViewAdapter.View
         return data.size();
     }
 
+    //sarchbar filter Model
+    public void setFilterStudy(ArrayList<Study> filterStudy){
+        data = new ArrayList<>();
+        data.addAll(filterStudy);
+        notifyDataSetChanged();
+    }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{

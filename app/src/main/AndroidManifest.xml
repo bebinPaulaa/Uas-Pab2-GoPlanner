@@ -17,8 +17,7 @@
             android:name=".ActivityAboutApp"
             android:exported="false"
             android:theme="@style/Theme.GoPlanner.ActionBarOren"
-
-            android:parentActivityName=".ProfileActivity"/>
+            android:parentActivityName=".HomeActivity"/>
         <activity
             android:name=".AddNotesActivity"
             android:exported="false"
