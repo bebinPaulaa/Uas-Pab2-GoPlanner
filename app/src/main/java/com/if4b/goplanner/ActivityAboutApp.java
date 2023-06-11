@@ -12,7 +12,7 @@ public class ActivityAboutApp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityAboutAppBinding.inflate(getLayoutInflater());
-        getSupportActionBar().setTitle("ABOUT APP");
+        getSupportActionBar().setTitle("About Us");
         setContentView(binding.getRoot());
 
 
